@@ -20,9 +20,9 @@ public class RrdEventRecorder implements EventRecorder {
     private final long bucketWidthMilliseconds;
     private final EventBucketListener listener;
 
-    private final ConcurrentMap<String, RRD> rrdMap = new ConcurrentHashMap<String, RRD>();
+    private final ConcurrentMap<String, RRD> rrdMap = new ConcurrentHashMap<>();
 
-    public static final long SECOND = 1000l;
+    public static final long SECOND = 1000L;
     public static final long MINUTE = 60 * SECOND;
     public static final long HOUR = 60 * MINUTE;
     public static final long DAY = 24 * HOUR;
@@ -124,7 +124,7 @@ public class RrdEventRecorder implements EventRecorder {
      * Get a list of event buckets in chronological order, with the last bucket
      * corresponding to the untilMillis parameter. Any buckets not covered by
      * the current RRD buffer are "extrapolated" as empty buckets.
-     * <p/>
+     * <p>
      * This is useful to display a sliding window ending with the current time,
      * even if no events have been recorded recently.
      *
@@ -149,7 +149,7 @@ public class RrdEventRecorder implements EventRecorder {
      * Get a map of all lists of (used) event buckets, for all names, with the
      * last bucket corresponding to the untilMillis parameter. Any buckets not
      * covered by the current RRD buffer are "extrapolated" as empty buckets.
-     * <p/>
+     * <p>
      * This is effectively a convenience method combining {@link #getNames()}
      * and {@link #getEventBuckets(String, long)}.
      *
@@ -158,7 +158,7 @@ public class RrdEventRecorder implements EventRecorder {
      * @see #getEventBuckets(String, long)
      */
     public Map<String, List<EventBucket>> getEventBuckets(final long untilMillis) {
-        final Map<String, List<EventBucket>> result = new TreeMap<String, List<EventBucket>>();
+        final Map<String, List<EventBucket>> result = new TreeMap<>();
         for (final Map.Entry<String, RRD> entry : rrdMap.entrySet()) {
             result.put(entry.getKey(), entry.getValue().getEventBuckets(untilMillis));
         }
@@ -167,14 +167,14 @@ public class RrdEventRecorder implements EventRecorder {
 
     /**
      * Get a map of all lists of (used) event buckets, for all names.
-     * <p/>
+     * <p>
      * This is effectively a convenience method combining {@link #getNames()}
      * and {@link #getEventBuckets(String)}.
      *
      * @see #getEventBuckets(String)
      */
     public Map<String, List<EventBucket>> getEventBuckets() {
-        final Map<String, List<EventBucket>> result = new TreeMap<String, List<EventBucket>>();
+        final Map<String, List<EventBucket>> result = new TreeMap<>();
         for (final Map.Entry<String, RRD> entry : rrdMap.entrySet()) {
             result.put(entry.getKey(), entry.getValue().getEventBuckets());
         }
@@ -186,7 +186,7 @@ public class RrdEventRecorder implements EventRecorder {
      * creation or the last clear() call).
      */
     public List<String> getNames() {
-        final List<String> result = new ArrayList<String>(rrdMap.keySet());
+        final List<String> result = new ArrayList<>(rrdMap.keySet());
         Collections.sort(result);
         return result;
     }

@@ -156,7 +156,7 @@ final class RRD {
     }
 
     List<EventBucket> getEventBuckets() {
-        final List<EventBucket> bucketlist = new ArrayList<EventBucket>(numberOfBuckets);
+        final List<EventBucket> bucketlist = new ArrayList<>(numberOfBuckets);
 
         synchronized (data) {
             if (data.newestBucketIndex < 0) {
@@ -172,7 +172,7 @@ final class RRD {
     }
 
     List<EventBucket> getEventBuckets(final long untilMilliseconds) {
-        final List<EventBucket> bucketlist = new ArrayList<EventBucket>(numberOfBuckets);
+        final List<EventBucket> bucketlist = new ArrayList<>(numberOfBuckets);
 
         final long intervalStartOfFirstBucket = intervalStartForTriggerTime(untilMilliseconds)
                 + bucketWidthInMilliseconds - numberOfBuckets * bucketWidthInMilliseconds;

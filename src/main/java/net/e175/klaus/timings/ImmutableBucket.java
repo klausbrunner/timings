@@ -2,7 +2,7 @@ package net.e175.klaus.timings;
 
 /**
  * Immutable implementation of EventBucket.
- * <p/>
+ * <p>
  * This implementation has the usual nice properties of immutable objects
  * (thread safety, safe publication), but may not be as memory-efficient for
  * frequent updates.

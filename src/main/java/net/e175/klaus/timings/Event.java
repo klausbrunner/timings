@@ -3,7 +3,7 @@ package net.e175.klaus.timings;
 /**
  * An Event models something that can be recorded. Events have no identity, as
  * they are expected to be aggregated anyway.
- * <p/>
+ * <p>
  * Implementations should take care of thread safety: immutability is
  * recommended.
  */

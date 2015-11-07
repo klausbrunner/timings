@@ -2,12 +2,12 @@ package net.e175.klaus.timings;
 
 /**
  * Mutable implementation of EventBucket.
- * <p/>
+ * <p>
  * This mutable implementation is somewhat easier on the garbage collector than
  * ImmutableBucket; very much so under high load (thousands of events per
  * second) and the Hotspot Client VM. On Hotspot server, it doesn't seem to make
  * much of a difference. YMMV.
- * <p/>
+ * <p>
  * It has no synchronization whatsoever.
  *
  * @NotThreadSafe
