@@ -1,18 +1,15 @@
 package net.e175.klaus.timings;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * A convenient wrapper/transfer class for exporting EventBuckets via JAXB to
- * XML/JSON. It should not be used for any other purpose.
+ * A convenient wrapper/transfer class for exporting EventBuckets via data binding libraries.
+ * It should not be used for any other purpose.
  *
  * @NotThreadSafe
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 @SuppressWarnings("all")
 public final class EventBuckets {
 
@@ -63,11 +60,8 @@ public final class EventBuckets {
         return bucketlist.toArray(new EventBucketWrapper[bucketlist.size()]);
     }
 
-    @XmlAccessorType(XmlAccessType.FIELD)
     static class NameToBuckets {
-        @XmlAttribute
         public String name;
-        @XmlElement(name = "bucket")
         public EventBucketWrapper[] buckets;
 
         NameToBuckets() {
@@ -79,7 +73,6 @@ public final class EventBuckets {
         }
     }
 
-    @XmlAccessorType(XmlAccessType.FIELD)
     static class EventBucketWrapper {
         public Long intervalStart;
         public Long intervalEnd;

@@ -39,6 +39,6 @@ Characteristics
 * It’s very small, currently well below 1000 LOC.
 * No logging framework needed.
 * No external storage needed (neither filesystem nor a DBMS).
-* No runtime dependencies at all, just plain Java SE 6.
+* No runtime dependencies at all, just plain Java SE 8.
 * Performance: I can easily record several million events per second from several threads, all on a modest Core i-3 machine with default JVM settings.
 * It’s covered by a fairly good base of test cases, including multi-threaded stress tests. And it’s regularly checked with static analyzers such as FindBugs. However, it hasn’t seen heavy long-term production use yet.

@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
 
 public class RrdEventRecorderTest {
 
-    class SimpleListener implements EventBucketListener {
+    static class SimpleListener implements EventBucketListener {
         public long count = 0;
-        public final List<EventBucket> events = new ArrayList<EventBucket>();
+        public final List<EventBucket> events = new ArrayList<>();
 
         @Override
         public synchronized void supersededBucket(String name, EventBucket bucket) {
@@ -99,7 +99,7 @@ public class RrdEventRecorderTest {
 
         assertTrue(recorder.getEventBuckets("1").size() > 0);
         recorder.clear();
-        assertTrue(recorder.getEventBuckets("1").size() == 0);
+        assertEquals(0, recorder.getEventBuckets("1").size());
     }
 
     @Test
@@ -157,7 +157,7 @@ public class RrdEventRecorderTest {
     }
 
     List<Event> createHourlyEvents(final String name) {
-        List<Event> events = new ArrayList<Event>();
+        List<Event> events = new ArrayList<>();
 
         for (int i = 0; i < 24; i++) {
             for (int v = 0; v <= i * 1000; v++) {

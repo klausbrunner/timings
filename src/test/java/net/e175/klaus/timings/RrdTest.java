@@ -11,9 +11,9 @@ import static org.junit.Assert.assertTrue;
 
 public class RrdTest {
 
-    class SimpleListener implements EventBucketListener {
+    static class SimpleListener implements EventBucketListener {
         public long count = 0;
-        public final List<EventBucket> events = new ArrayList<EventBucket>();
+        public final List<EventBucket> events = new ArrayList<>();
 
         @Override
         public synchronized void supersededBucket(String name, EventBucket bucket) {
@@ -187,7 +187,7 @@ public class RrdTest {
     }
 
     @Test
-    public void triggersCallbacks() throws Exception {
+    public void triggersCallbacks() {
 
         SimpleListener listener = new SimpleListener();
 
@@ -203,7 +203,7 @@ public class RrdTest {
     }
 
     @Test
-    public void triggersCallbacksInExpectedOrder() throws Exception {
+    public void triggersCallbacksInExpectedOrder() {
 
         SimpleListener listener = new SimpleListener();
 
@@ -310,7 +310,7 @@ public class RrdTest {
     }
 
     List<Event> createHourlyEvents() {
-        List<Event> events = new ArrayList<Event>();
+        List<Event> events = new ArrayList<>();
 
         for (int i = 0; i < 24; i++) {
             for (int v = 0; v <= i; v++) {

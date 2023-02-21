@@ -27,8 +27,8 @@ final class ImmutableBucket implements EventBucket {
         intervalEnd = oldBucket.getIntervalEnd();
         count = oldBucket.getCount() + 1;
 
-        minValue = newEvent.getValue() < oldBucket.getMinValue() ? newEvent.getValue() : oldBucket.getMinValue();
-        maxValue = newEvent.getValue() > oldBucket.getMaxValue() ? newEvent.getValue() : oldBucket.getMaxValue();
+        minValue = Math.min(newEvent.getValue(), oldBucket.getMinValue());
+        maxValue = Math.max(newEvent.getValue(), oldBucket.getMaxValue());
         meanValue = oldBucket.getMeanValue() + (newEvent.getValue() - oldBucket.getMeanValue()) / count;
     }
 
